@@ -4,13 +4,13 @@ from codeshare.models import Problem, Code
 
 
 def home(request):
-    codes = Code.objects.all()[:20]
+    codes = Code.objects.all().order_by('-submit_time')[:20]
     return render(request, 'index.html', {'codes': codes})
 
 
 def show_problem(request, problem_id):
     problem = get_object_or_404(Problem, pk=problem_id)
-    codes = Code.objects.filter(problem=problem)
+    codes = Code.objects.filter(problem=problem).order_by('-submit_time')
     return render(request, 'problem.html', {'problem': problem, 'codes': codes})
 
 

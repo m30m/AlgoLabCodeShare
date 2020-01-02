@@ -16,6 +16,7 @@ class Code(models.Model):
     problem = models.ForeignKey(Problem, null=True, on_delete=models.SET_NULL)
     handle = models.CharField(max_length=30)
     score = models.IntegerField()
+    submit_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'Code for problem {self.problem} by {self.handle} with score {self.score}'
