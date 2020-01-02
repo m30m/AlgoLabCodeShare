@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="ui container">
+        <div class="ui text container center">
+            <h1 class="ui header">You are submitting your solution for problem <br/>{{ problem }}</h1>
+        </div>
+        <form class="ui form" method="post">
+            {% csrf_token %}
+            <div class="three wide field">
+                <label>Handle</label>
+                <input type="text" minlength="3" name="handle" required placeholder="Who are you?">
+            </div>
+            <div class="three wide field">
+                <label>Score</label>
+                <input type="number" min="0" max="100" name="score" required placeholder="Submission score on judge">
+            </div>
+            <div class="field">
+                <label>Code Description</label>
+                <textarea rows="2" name="description"></textarea>
+            </div>
+            <div class="field">
+                <label>Code</label>
+                <textarea rows="10" required minlength="1" name="code"></textarea>
+            </div>
+            <button class="ui primary button" type="submit">Submit</button>
+
+        </form>
+    </div>
+{% endblock %}

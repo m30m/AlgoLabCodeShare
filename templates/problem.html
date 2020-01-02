@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="ui container center aligned segment">
+        <div class="ui text container center">
+            <h1 class="ui header">{{ problem }}</h1>
+            <a class="ui primary button" href="/submit/{{ problem.id }}">
+                Submit your own code
+            </a>
+        </div>
+    </div>
+    <div class="ui container">
+        <div class="ui four cards">
+            {% for code in codes %}
+                <a class="ui card" href="/code/{{ code.id }}">
+                    <div class="content">
+                        <div class="header">Submitted by {{ code.handle }}</div>
+                        <div class="meta">
+                            Score: {{ code.score }}
+                        </div>
+                        <div class="description">
+                            {{ code.description }}
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <h1 class="ui header">Sorry, no one has submitted any code for this problem. You can be the first one
+                    :)</h1>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

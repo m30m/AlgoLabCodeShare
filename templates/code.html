@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="ui container">
+        <h3 class="ui header">Code Description:</h3>
+        <p>
+            {% if code.description %}
+
+                {{ code.description|linebreaks }}
+            {% else %}
+                No description provided.
+            {% endif %}
+        </p>
+    </div>
+    <div class="ui container">
+        <pre><code class="C++">{{ code.code }}
+    </code></pre>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
