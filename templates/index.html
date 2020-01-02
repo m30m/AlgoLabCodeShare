@@ -15,4 +15,22 @@
             </div>
         </div>
     </div>
+    <div class="ui container">
+        <h1 class="ui header">Recent submissions</h1>
+        <div class="ui four cards">
+            {% for code in codes %}
+                <a class="ui card" href="/code/{{ code.id }}">
+                    <div class="content">
+                        <div class="header">Code for {{ code.problem.name }} by {{ code.handle }}</div>
+                        <div class="meta">
+                            Score: {{ code.score }}
+                        </div>
+                        <div class="description">
+                            {{ code.description }}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -4,7 +4,8 @@ from codeshare.models import Problem, Code
 
 
 def home(request):
-    return render(request, 'index.html')
+    codes = Code.objects.all()[:20]
+    return render(request, 'index.html', {'codes': codes})
 
 
 def show_problem(request, problem_id):
